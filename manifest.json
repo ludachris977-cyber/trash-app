@@ -9,5 +9,25 @@
   "start_url": "/",
   "theme_color": "#ffffff",
   "description": "Get your trash collected ASAP",
-  "id": "/"
+  "id": "/",
+  {
+  "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "EcoTrash Pickup",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "EcoTrash",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "description": "Get your trash collected ASAP",
+  "id": "/",
+  "icons": [
+    {
+      "src": "/static/icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
 }
