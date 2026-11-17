@@ -10,24 +10,11 @@
   "theme_color": "#ffffff",
   "description": "Get your trash collected ASAP",
   "id": "/",
-  {
-  "background_color": "#ffffff",
-  "dir": "ltr",
-  "display": "standalone",
-  "name": "EcoTrash Pickup",
-  "orientation": "any",
-  "scope": "/",
-  "short_name": "EcoTrash",
-  "start_url": "/",
-  "theme_color": "#ffffff",
-  "description": "Get your trash collected ASAP",
-  "id": "/",
   "icons": [
     {
-      "src": "/static/icon.png",
+      "src": "https://trash-app-mc12.onrender.com/static/icon.png",
       "sizes": "512x512",
       "type": "image/png"
     }
   ]
-}
 }
