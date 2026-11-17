@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="manifest" href="/static/manifest.json">
+<meta name="theme-color" content="#2c3e50">
+    <meta charset="UTF-8">
+    <title>Worker Dashboard - EcoTrash</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f4f7f6; }
+        h1 { color: #2c3e50; }
+        .request-card { background: white; padding: 15px; margin-bottom: 15px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        #map { height: 400px; width: 100%; border-radius: 8px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h1>EcoTrash Driver Dashboard</h1>
+    <p>Active trash collection requests and customer locations:</p>
+
+    <div class="request-card">
+        <h3>Customer: KK Rasta</h3>
+        <p><strong>Phone:</strong> 0553705595</p>
+        <p><strong>Fee:</strong> 20.00 Cedis</p>
+        <p><strong>Status:</strong> Pending</p>
+        <p><strong>GPS Coordinates:</strong> 5.559628, -0.25478</p>
+        
+        <div id="map"></div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        var lat = 5.559628;
+        var lng = -0.25478;
+        var map = L.map('map').setView([lat, lng], 16);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        var marker = L.marker([lat, lng]).addTo(map);
+        marker.bindPopup("<b>KK Rasta's House</b><br>Pickup Fee: 20 Cedis").openPopup();
+    </script>
+    <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js');
+  }
+</script>
+</body>
+</html>

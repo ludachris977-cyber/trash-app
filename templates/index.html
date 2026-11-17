@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trash Pickup - 20 Cedis</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 20px; text-align: center; }
+        .card { background: white; padding: 20px; border-radius: 10px; max-width: 400px; margin: auto; box-shadow: 0px 4px 10px rgba(0,0,0,0.1); }
+        input, button { width: 90%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; }
+        button { background: #28a745; color: white; border: none; cursor: pointer; font-weight: bold; }
+        button:hover { background: #218838; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>EcoTrash Pickup</h2>
+        <p>Get your trash collected for just <strong>20 Cedis</strong>!</p>
+        
+        <form action="/book" method="POST">
+            <input type="text" name="name" placeholder="Your Full Name" required><br>
+            <input type="text" name="phone" placeholder="Phone Number (e.g. 024xxxxxxx)" required><br>
+            
+            <!-- Hidden inputs to hold GPS Coordinates -->
+            <input type="hidden" id="lat" name="lat">
+            <input type="hidden" id="lng" name="lng">
+            
+            <button type="button" onclick="getLocation()" style="background: #007bff;">📍 Get My GPS Location</button>
+            <p id="location-status" style="font-size: 14px; color: gray;">Location not set yet</p>
+            
+            <button type="submit">Request Pickup (20 Cedis)</button>
+        </form>
+    </div>
+
+    <script>
+        function getLocation() {
+            const status = document.getElementById('location-status');
+            if (!navigator.geolocation) {
+                status.innerText = "Geolocation is not supported by your browser";
+                return;
+            }
+            
+            status.innerText = "Locating your position...";
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    document.getElementById('lat').value = position.coords.latitude;
+                    document.getElementById('lng').value = position.coords.longitude;
+                    status.innerText = "Location locked successfully! ✅";
+                    status.style.color = "green";
+                },
+                () => {
+                    status.innerText = "Unable to retrieve your location. Please enable GPS.";
+                    status.style.color = "red";
+                }
+            );
+        }
+    </script>
+
+</body>
+</html>
